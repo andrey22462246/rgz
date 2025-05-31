@@ -122,10 +122,10 @@
     </section>
   </main>
 
-  <!-- УНИФИЦИРОВАННАЯ КНОПКА НАВЕРХ -->
+  
   <a href="#" class="to-top">↑ Наверх</a>
 
-  <!-- Нижнее меню -->
+  
   <nav class="bottom-menu" aria-label="Меню сайта">
     <a href="index.html" title="О компании">
       <img src="images/icon_about.png" alt="О компании" />
@@ -162,7 +162,7 @@
         toRub.textContent = !isNaN(kgs) ? (kgs / currentRate).toFixed(2) : '—';
       });
 
-      // График
+      
       const labels = [];
       const dataPoints = [];
       const today = new Date();
@@ -212,7 +212,7 @@
         }
       });
 
-      // Кнопка "Наверх"
+      
       document.querySelector('.to-top').addEventListener('click', function(e) {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
