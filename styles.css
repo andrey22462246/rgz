@@ -1,0 +1,142 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #000;
+}
+
+
+.header {
+  background-color: #003DA6;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+.logo {
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+
+.content {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+.content h2 {
+  color: #003DA6;
+}
+.content .image {
+  max-width: 100%;
+  height: auto;
+  margin: 15px 0;
+}
+
+
+.to-top {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background-color: #003DA6;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  z-index: 1001;
+}
+
+
+.bottom-menu {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #003DA6;
+  padding: 10px 20px;
+  display: flex;
+  gap: 20px;
+  border-radius: 12px 12px 0 0;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+.bottom-menu:hover {
+  transform: translateX(-50%) scale(1.1);
+}
+.bottom-menu img {
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) invert(1); 
+  transition: transform 0.3s ease;
+}
+.bottom-menu img:hover {
+  transform: scale(1.2);
+}
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 100px; 
+}
+
+.news-card {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.news-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.news-date {
+  font-size: 0.9em;
+  color: #555;
+}
+
+.news-full {
+  margin-top: 10px;
+}
+.hidden {
+  display: none;
+}
+
+.show-more {
+  margin-top: 10px;
+  background-color: #003DA6;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.show-more:hover {
+  background-color: #002b73;
+}
+.video-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.video-card iframe {
+  width: 100%;
+  max-width: 800px;
+  height: 450px;
+  border-radius: 8px;
+  display: block;
+  margin: auto;
+}
+
+.video-card p {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  color: #003DA6;
+  font-weight: bold;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Видео — НЛМК</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <style>
+    .to-top {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background-color: #003DA6;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+    .to-top:hover {
+      background-color: #007BFF;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <img src="images/logo-nlmk.png" alt="Логотип НЛМК" class="logo" />
+    <h1>Видео о компании НЛМК</h1>
+  </header>
+
+  <main class="content">
+    <h2>Корпоративный ролик</h2>
+    <div class="video-grid">
+      <div class="video-card">
+        <iframe 
+          src="https://www.youtube.com/embed/WzNbp9IOmDw" 
+          title="Время твоих возможностей" 
+          frameborder="0" 
+          allowfullscreen>
+        </iframe>
+        <p>«Время твоих возможностей» — корпоративный видеоролик компании НЛМК.</p>
+      </div>
+    </div>
+  </main>
+
+  <a href="#" class="to-top" title="Наверх">↑ Наверх</a>
+
+  <nav class="bottom-menu" aria-label="Меню сайта">
+    <a href="index.html" title="О компании">
+      <img src="images/icon_about.png" alt="О компании" />
+    </a>
+    <a href="news.html" title="Новости">
+      <img src="images/icon_news.png" alt="Новости" />
+    </a>
+    <a href="currency.html" title="Курс валют">
+      <img src="images/icon_currency.png" alt="Курс валют" />
+    </a>
+    <a href="contacts.html" title="Контакты">
+      <img src="images/icon_contacts.png" alt="Контакты" />
+    </a>
+    <a href="video.html" title="Видео">
+      <img src="images/icon_video.png" alt="Видео" />
+    </a>
+  </nav>
+
+  <script>
+    document.querySelector('.to-top').addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

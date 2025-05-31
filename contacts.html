@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Контактные данные — НЛМК</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Унифицированный стиль кнопки "Наверх" */
+    .to-top {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background-color: #003DA6;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+    .to-top:hover {
+      background-color: #007BFF;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <img src="images/logo-nlmk.png" alt="Логотип НЛМК" class="logo" />
+    <h1>Контактные данные НЛМК</h1>
+  </header>
+
+  <main class="content">
+    <h2>Телефоны</h2>
+    <p><strong>Горячая линия:</strong> <a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
+    <p><strong>Отдел продаж:</strong> <a href="tel:+74959876543">+7 (495) 987-65-43</a></p>
+
+    <h2>Адреса</h2>
+    <p>Москва, ул. Новая, д. 1, офис 101</p>
+    <p>Воронеж, ул. Ленина, д. 10</p>
+
+    <h2>Электронная почта</h2>
+    <p><a href="mailto:info@nlmk.com">info@nlmk.com</a></p>
+
+    <h2>Расположение на карте</h2>
+    <iframe 
+      src="https://yandex.ru/map-widget/v1/?ll=39.217174%2C51.672344&z=15&mode=search&text=НЛМК%20Воронеж" 
+      width="100%" 
+      height="400" 
+      frameborder="0" 
+      allowfullscreen 
+      loading="lazy" 
+      title="Карта расположения НЛМК">
+    </iframe>
+  </main>
+
+  <a href="#" class="to-top" title="Наверх">↑ Наверх</a>
+
+  <nav class="bottom-menu" aria-label="Меню сайта">
+    <a href="index.html" title="О компании">
+      <img src="images/icon_about.png" alt="О компании" />
+    </a>
+    <a href="news.html" title="Новости">
+      <img src="images/icon_news.png" alt="Новости" />
+    </a>
+    <a href="currency.html" title="Курс валют">
+      <img src="images/icon_currency.png" alt="Курс валют" />
+    </a>
+    <a href="contacts.html" title="Контакты">
+      <img src="images/icon_contacts.png" alt="Контакты" />
+    </a>
+    <a href="video.html" title="Видео">
+      <img src="images/icon_video.png" alt="Видео" />
+    </a>
+  </nav>
+
+  <script>
+    // Унифицированный скрипт для кнопки "Наверх"
+    document.querySelector('.to-top').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>

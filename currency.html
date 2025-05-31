@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Курс валют — НЛМК</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0; background: #f9f9f9; color: #222;
+    }
+    header {
+      background: #003DA6;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .logo {
+      height: 50px;
+      vertical-align: middle;
+    }
+    main {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+    h1, h2 {
+      font-weight: 700;
+    }
+    .currency-calculator {
+      background: white;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      font-size: 1rem;
+      box-sizing: border-box;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    p {
+      margin: 5px 0 15px;
+      font-size: 1.1rem;
+    }
+    .currency-chart {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    #chartInfo {
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #003DA6;
+    }
+    .bottom-menu {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #003DA6;
+      padding: 8px 20px;
+      border-radius: 15px 15px 0 0;
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+    .bottom-menu:hover {
+      transform: translateX(-50%) scale(1.1);
+    }
+    .bottom-menu a img {
+      height: 32px;
+      filter: invert(100%);
+      cursor: pointer;
+      transition: filter 0.3s ease;
+    }
+    .bottom-menu a:hover img {
+      filter: invert(60%) sepia(100%) saturate(500%) hue-rotate(190deg);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="images/logo-nlmk.png" alt="Логотип НЛМК" class="logo" />
+    <h1>Курс валют: Российский рубль — Киргизский сом (KGS)</h1>
+  </header>
+
+  <main>
+    <section class="currency-calculator">
+      <h2>Калькулятор валют</h2>
+      <p>Актуальный курс: <strong>1 RUB = <span id="rate">1.2564</span> KGS</strong></p>
+
+      <label for="rubInput">Рубли (RUB) → Сомы (KGS):</label>
+      <input type="number" id="rubInput" placeholder="Введите сумму в рублях" min="0" step="any" />
+      <p>Итого: <span id="toKgs">—</span> KGS</p>
+
+      <label for="kgsInput">Сомы (KGS) → Рубли (RUB):</label>
+      <input type="number" id="kgsInput" placeholder="Введите сумму в сомах" min="0" step="any" />
+      <p>Итого: <span id="toRub">—</span> RUB</p>
+    </section>
+
+    <section class="currency-chart">
+      <h2>График изменения курса за последний месяц</h2>
+      <canvas id="chartKgs" height="400"></canvas>
+      <p id="chartInfo">Нажмите на столбец, чтобы увидеть дату и курс.</p>
+    </section>
+  </main>
+
+  <!-- УНИФИЦИРОВАННАЯ КНОПКА НАВЕРХ -->
+  <a href="#" class="to-top">↑ Наверх</a>
+
+  <!-- Нижнее меню -->
+  <nav class="bottom-menu" aria-label="Меню сайта">
+    <a href="index.html" title="О компании">
+      <img src="images/icon_about.png" alt="О компании" />
+    </a>
+    <a href="news.html" title="Новости">
+      <img src="images/icon_news.png" alt="Новости" />
+    </a>
+    <a href="currency.html" title="Курс валют">
+      <img src="images/icon_currency.png" alt="Курс валют" />
+    </a>
+    <a href="contacts.html" title="Контакты">
+      <img src="images/icon_contacts.png" alt="Контакты" />
+    </a>
+    <a href="video.html" title="Видео">
+      <img src="images/icon_video.png" alt="Видео" />
+    </a>
+  </nav>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentRate = 1.2564;
+      const rubInput = document.getElementById('rubInput');
+      const kgsInput = document.getElementById('kgsInput');
+      const toKgs = document.getElementById('toKgs');
+      const toRub = document.getElementById('toRub');
+
+      rubInput.addEventListener('input', () => {
+        const rub = parseFloat(rubInput.value);
+        toKgs.textContent = !isNaN(rub) ? (rub * currentRate).toFixed(2) : '—';
+      });
+
+      kgsInput.addEventListener('input', () => {
+        const kgs = parseFloat(kgsInput.value);
+        toRub.textContent = !isNaN(kgs) ? (kgs / currentRate).toFixed(2) : '—';
+      });
+
+      // График
+      const labels = [];
+      const dataPoints = [];
+      const today = new Date();
+
+      for (let i = 29; i >= 0; i--) {
+        const date = new Date(today);
+        date.setDate(today.getDate() - i);
+        labels.push(date.toLocaleDateString('ru-RU'));
+        const fluctuation = Math.sin(i / 5) * 0.02 + (Math.random() - 0.5) * 0.01;
+        const value = currentRate * (1 + fluctuation);
+        dataPoints.push(parseFloat(value.toFixed(4)));
+      }
+
+      const ctx = document.getElementById('chartKgs').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Курс RUB → KGS',
+            data: dataPoints,
+            backgroundColor: '#003DA6',
+            hoverBackgroundColor: '#007BFF',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: { beginAtZero: false, title: { display: true, text: 'Курс (KGS за 1 RUB)' } },
+            x: { title: { display: true, text: 'Дата' } }
+          },
+          plugins: {
+            tooltip: {
+              callbacks: {
+                label: ctx => `1 RUB = ${ctx.raw.toFixed(4)} KGS`
+              }
+            }
+          },
+          onClick: (e, elements) => {
+            if (elements.length > 0) {
+              const index = elements[0].index;
+              document.getElementById('chartInfo').textContent = 
+                `${labels[index]}: 1 RUB = ${dataPoints[index].toFixed(4)} KGS`;
+            }
+          }
+        }
+      });
+
+      // Кнопка "Наверх"
+      document.querySelector('.to-top').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>

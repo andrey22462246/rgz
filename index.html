@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>О компании НЛМК</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+</head>
+<body>
+  
+  <header class="header">
+    <img src="images/logo-nlmk.png" alt="Логотип НЛМК" class="logo" />
+    <h1>Новолипецкий металлургический комбинат</h1>
+  </header>
+
+  <main class="content">
+    <section>
+      <h2>Общие сведения</h2>
+      <p><strong>НЛМК</strong> — один из крупнейших металлургических комбинатов России и мира, занимающийся производством стали и проката.</p>
+      <p>Головной офис компании расположен в городе <u>Липецк</u>.</p>
+    </section>
+
+    <section>
+      <h2>История компании</h2>
+      <p><em>Новолипецкий металлургический комбинат</em> был основан в <strong>1931 году</strong> и с тех пор прошёл путь от завода регионального значения до международного металлургического холдинга.</p>
+      <img src="images/nlmk-history.jpg" alt="Фото НЛМК в советские годы" class="image" />
+    </section>
+
+    <section>
+      <h2>Основные направления деятельности</h2>
+      <ul>
+        <li>Производство стали и стального проката</li>
+        <li>Добыча и переработка железной руды</li>
+        <li>Поставка продукции на внутренний и международный рынки</li>
+        <li>Инвестиции в инновации и экологические технологии</li>
+      </ul>
+      <img src="images/nlmk-production.jpg" alt="Производственные мощности НЛМК" class="image" />
+    </section>
+
+    <section>
+      <h2>Дополнительная информация о компании</h2>
+      <p>Группа НЛМК — лидирующий международный производитель высококачественной стальной продукции с вертикально-интегрированной моделью бизнеса. Добыча сырья и производство стали сосредоточены в низкозатратных регионах, изготовление готовой продукции осуществляется в непосредственной близости от основных потребителей в России, Северной Америке и странах ЕС.</p>
+      <p>Благодаря самообеспеченности в основных сырьевых материалах, энергии и высокой технологической оснащенности НЛМК входит в число самых эффективных и прибыльных производителей стали в мире. Компания имеет диверсифицированный продуктовый портфель, обеспечивающий лидерство на локальных рынках и высокую эффективность продаж. Используя преимущества гибкой производственной цепочки, сбалансированного продуктового ряда, эффективной системы сбыта и обширной географии продаж, компания обладает возможностью своевременно реагировать на постоянно изменяющиеся рыночные условия.</p>
+    </section>
+
+    <section>
+      <h2>Ссылки</h2>
+      <p>Официальный сайт компании — <a href="https://nlmk.com" target="_blank" rel="noopener noreferrer">nlmk.com</a></p>
+    </section>
+  </main>
+
+  <a href="#" class="to-top">↑ Наверх</a>
+
+  <nav class="bottom-menu">
+    <a href="index.html" title="О компании">
+      <img src="images/icon_about.png" alt="О компании" />
+    </a>
+    <a href="news.html" title="Новости">
+      <img src="images/icon_news.png" alt="Новости" />
+    </a>
+    <a href="currency.html" title="Курс валют">
+      <img src="images/icon_currency.png" alt="Курс валют" />
+    </a>
+    <a href="contacts.html" title="Контакты">
+      <img src="images/icon_contacts.png" alt="Контакты" />
+    </a>
+    <a href="video.html" title="Видео">
+      <img src="images/icon_video.png" alt="Видео" />
+    </a>
+  </nav>
+
+  <script>
+    document.querySelector('.to-top').addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>
